@@ -20,6 +20,7 @@
 #'   should concatenate names to.
 #' @return f [function] A function that, when called on a filename,
 #'   concatenates dir over that filename.
+#' @export
 output_path <- function(dir) {
   function(filename) {
     file.path(dir, filename)
@@ -35,6 +36,7 @@ output_path <- function(dir) {
 #'   create_job.
 #' @return opts [list] The original opts list with unspecified opts
 #'   filled in with defaults.
+#' @export
 merge_defaults <- function(opts) {
   defaults <- list(
     "modules" = "R/3.3.0",
@@ -57,6 +59,7 @@ merge_defaults <- function(opts) {
 #' @return NULL
 #' @side-effects Writes a file to outfile giving the script that can
 #'   be sbatched.
+#' @export
 create_job <- function(outfile, jobname, script_lines, opts = list()) {
   opts <- merge_defaults(opts)
   slurm_opts <- c(
